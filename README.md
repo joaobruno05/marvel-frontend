@@ -1,5 +1,5 @@
 # Funcionamento da Aplicação
-A aplicação é uma busca por personagens da Marvel de acordo com o filtro de pesquisa utilizado. Quando a página é carregada é feito uma requisição para a API da Marvel onde é retornado os personagens.
+A aplicação é uma busca por personagens da Marvel de acordo com o filtro de pesquisa utilizado. Quando a página é carregada é feito uma requisição para a API da Marvel onde são retornados os personagens.
 
 Inicialmente, como o usuário não pesquisou nada, é mostrado todos os personagens (sem nenhum filtro) e eles são divididos por paginação, onde pode ser carregado mais clicando no botão "SEE MORE" na parte inferior do site. O usuário pode também pesquisar pelo nome do personagem na barra de pesquisa.
 
