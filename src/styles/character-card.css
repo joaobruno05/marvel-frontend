@@ -32,6 +32,18 @@
   text-align: center;
 }
 
+.select {
+  background-color: green;
+  display: block;
+  color: white;
+  padding: 5px;
+  font-weight: 900;
+}
+
+.no-select {
+  display: none;
+}
+
 .img-card {
   width: 100%;
   height: 300px;

@@ -8,7 +8,7 @@ import '../styles/more-button.css';
 
 function MoreButton() {
   const {
-    characters, setCharacters, filteredCharacters, setFilteredCharacters, filteredData,
+    characters, setCharacters, filteredCharacters, setFilteredCharacters, inputSearch,
   } = useContext(MarvelContext);
 
   const handleMoreButton = useCallback(async () => {
@@ -16,6 +16,7 @@ function MoreButton() {
       const offset = (
         (filteredCharacters.length === 0) ? (characters.length) : (filteredCharacters.length)
       );
+      console.log(filteredCharacters);
 
       const response = await resultAPI.get('/characters', {
         params: {
@@ -27,9 +28,8 @@ function MoreButton() {
         setCharacters([...characters, ...response.data.data.results]);
       } else {
         setFilteredCharacters(
-          [...filteredCharacters,
-            ...filteredData(),
-          ],
+          [...filteredCharacters, ...response.data.data.results
+            .filter(({ name }) => name.toUpperCase().includes(inputSearch.toUpperCase()))],
         );
       }
     } catch (error) {

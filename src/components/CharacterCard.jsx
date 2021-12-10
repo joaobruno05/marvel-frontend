@@ -8,6 +8,7 @@ function CharacterCard({
   id, name, description, path, extension,
 }) {
   const [clicked, setClicked] = useState(false);
+  // const [selected, setSelected] = useState(false);
 
   return (
     <div
@@ -23,6 +24,7 @@ function CharacterCard({
         <div className="card">
           <div>
             <h2 className="name-card">{name}</h2>
+            <p className={clicked ? 'select' : 'no-select'}>Character selected !</p>
             <img
               className="img-card"
               // Colocar uma imagem diferente quando for uma imagem não avaliada
