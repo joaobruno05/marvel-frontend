@@ -1,0 +1,15 @@
+header {
+  background-color: #292929;
+}
+
+.logo {
+  width: 80%;
+  margin: 0 auto;
+  padding: 15px;
+  margin-bottom: 30px;
+  display: flex;
+}
+
+.logo img {
+  width: 20%;
+}

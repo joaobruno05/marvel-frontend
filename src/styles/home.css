@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Marvel', sans-serif;
+}
+
+.title {
+  text-align: center;
+  padding: 30px;
+}
+
+.characters-block {
+  background-color: #f1f1f1;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  justify-content: space-around;
+  margin: 0 auto;
+}

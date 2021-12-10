@@ -1,0 +1,18 @@
+footer {
+  background-color: #292929;
+  margin-top: 50px;
+  margin-bottom: 0;
+}
+
+.div-footer {
+  display: flex;
+  margin: 0 auto;
+  padding: 20px;
+  width: 80%;
+  height: min-content;
+}
+
+.div-footer p {
+  color: white;
+  opacity: 0.8;
+}
