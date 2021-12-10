@@ -33,7 +33,7 @@ function MarvelProvider({ children }) {
       setFilteredCharacters(filteredData());
     };
     showFilteredCharacters();
-  }, [inputSearch, filteredData]);
+  }, [inputSearch]);
 
   const context = useMemo(() => ({
     characters,
@@ -45,7 +45,7 @@ function MarvelProvider({ children }) {
     setStatus,
     inputSearch,
     setInputSearch,
-  }), [characters, filteredCharacters, filteredData, inputSearch, status]);
+  }));
 
   return (
     <MarvelContext.Provider value={context}>

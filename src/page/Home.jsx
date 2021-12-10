@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-// import Loading from '../components/Loading';
+import Loading from '../components/Loading';
 import Header from '../components/Header';
 import SearchBar from '../components/SearchBar';
 import CharactersNotFound from '../components/CharacterNotFound';
@@ -12,7 +12,7 @@ import '../styles/home.css';
 
 function Home() {
   const {
-    characters, filteredCharacters, filteredData,
+    characters, filteredCharacters, filteredData, status,
   } = useContext(MarvelContext);
 
   // Renderizar na tela de acordo com a filtragem ou não dos personagens
@@ -24,7 +24,7 @@ function Home() {
   };
 
   // Mostrar a tela de "Loading" enquanto espera o retorno da requisição da API
-  // if (status === 'loading') return (<Loading />);
+  if (status === 'loading') return (<Loading />);
 
   return (
     <div>

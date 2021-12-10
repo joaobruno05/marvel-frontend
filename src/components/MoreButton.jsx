@@ -35,7 +35,7 @@ function MoreButton() {
     } catch (error) {
       console.log(`Error: ${error.message}`);
     }
-  }, [characters, filteredCharacters, setFilteredCharacters, filteredData, setCharacters]);
+  }, [characters, filteredCharacters]);
 
   return (
     <div className="container-btn">
