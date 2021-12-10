@@ -45,7 +45,7 @@ function MarvelProvider({ children }) {
     setStatus,
     inputSearch,
     setInputSearch,
-  }),[characters, filteredCharacters, filteredData, inputSearch, status]);
+  }), [characters, filteredCharacters, filteredData, inputSearch, status]);
 
   return (
     <MarvelContext.Provider value={context}>
