@@ -19,7 +19,7 @@ function SearchBar() {
           name="character"
           value={inputSearch}
           id="character"
-          placeholder="Characters Search"
+          placeholder="Comics Search"
           onChange={({ target }) => setInputSearch(target.value)}
         />
       </div>

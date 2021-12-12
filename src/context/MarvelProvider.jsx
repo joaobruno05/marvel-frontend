@@ -4,42 +4,42 @@ import resultAPI from '../services/marvelAPI';
 import MarvelContext from './MarvelContext';
 
 function MarvelProvider({ children }) {
-  const [characters, setCharacters] = useState([]);
-  const [filteredCharacters, setFilteredCharacters] = useState([]);
+  const [comics, setComics] = useState([]);
+  const [filteredComics, setFilteredComics] = useState([]);
   const [status, setStatus] = useState('loading');
   const [inputSearch, setInputSearch] = useState('');
 
   // Requisição da API para utilizar na página "Home", renderizando na hora da montagem da tela
   useEffect(() => {
-    const showCharacters = async () => {
+    const showComics = async () => {
       try {
-        const { data } = await resultAPI.get('/characters');
+        const { data } = await resultAPI.get('/comics');
         setStatus('OK');
-        setCharacters(data.data.results);
+        setComics(data.data.results);
       } catch (error) {
         console.log(`Error: ${error}`);
       }
     };
 
-    showCharacters();
+    showComics();
   }, []);
 
-  const filteredData = () => characters
-    .filter(({ name }) => name.toUpperCase().includes(inputSearch.toUpperCase()));
+  const filteredData = () => comics
+    .filter(({ title }) => title.toUpperCase().includes(inputSearch.toUpperCase()));
 
   // Personagens filtrados e atualizados a cada pesquisa do usuário
   useEffect(() => {
-    const showFilteredCharacters = () => {
-      setFilteredCharacters(filteredData());
+    const showFilteredComics = () => {
+      setFilteredComics(filteredData());
     };
-    showFilteredCharacters();
+    showFilteredComics();
   }, [inputSearch]);
 
   const context = useMemo(() => ({
-    characters,
-    setCharacters,
-    filteredCharacters,
-    setFilteredCharacters,
+    comics,
+    setComics,
+    filteredComics,
+    setFilteredComics,
     filteredData,
     status,
     setStatus,
