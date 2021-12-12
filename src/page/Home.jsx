@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import Loading from '../components/Loading';
 import Header from '../components/Header';
 import SearchBar from '../components/SearchBar';
-import CharactersNotFound from '../components/CharacterNotFound';
-import CharacterCard from '../components/CharacterCard';
+import ComicsNotFound from '../components/ComicsNotFound';
+import ComicsCard from '../components/ComicsCard';
 import MoreButton from '../components/MoreButton';
 import MarvelContext from '../context/MarvelContext';
 import Footer from '../components/Footer';
@@ -12,15 +12,15 @@ import '../styles/home.css';
 
 function Home() {
   const {
-    characters, filteredCharacters, filteredData, status,
+    comics, filteredComics, filteredData, status,
   } = useContext(MarvelContext);
 
   // Renderizar na tela de acordo com a filtragem ou não dos personagens
-  const getCharacters = () => {
-    if (filteredCharacters.length === 0) {
-      return characters;
+  const getComics = () => {
+    if (filteredComics.length === 0) {
+      return comics;
     }
-    return filteredCharacters;
+    return filteredComics;
   };
 
   // Mostrar a tela de "Loading" enquanto espera o retorno da requisição da API
@@ -30,26 +30,27 @@ function Home() {
     <div>
       <Header />
       <div className="div-title">
-        <h1 className="title">Characters</h1>
+        <h1 className="title">Comics</h1>
       </div>
       <SearchBar />
       <div className="characters-block">
         <div className="container">
-          {/* Se existir ou não tiver nenhum filtro aplicado,
+          {/* Se existir filtro aplicado ou não,
             os personagens são renderizados normalmente */}
-          { filteredData().length !== 0 ? getCharacters().map(({
-            id, name, description, thumbnail: { path, extension },
+          { filteredData().length !== 0 ? getComics().map(({
+            id, title, description, thumbnail: { path, extension },
           }) => (
-            <CharacterCard
+            <ComicsCard
               id={id}
-              name={name}
+              title={title}
               description={description}
               path={path}
               extension={extension}
+              // comics={comics}
             />
             // Caso o personagem que o usuário pesquisou não exista,
             // mostra-se uma mensagem personalizada
-          )) : <CharactersNotFound /> }
+          )) : <ComicsNotFound /> }
         </div>
       </div>
       <MoreButton />

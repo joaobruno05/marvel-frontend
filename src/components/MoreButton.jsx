@@ -8,34 +8,34 @@ import '../styles/more-button.css';
 
 function MoreButton() {
   const {
-    characters, setCharacters, filteredCharacters, setFilteredCharacters, inputSearch,
+    comics, setComics, filteredComics, setFilteredComics, inputSearch,
   } = useContext(MarvelContext);
 
   const handleMoreButton = useCallback(async () => {
     try {
       const offset = (
-        (filteredCharacters.length === 0) ? (characters.length) : (filteredCharacters.length)
+        (filteredComics.length === 0) ? (comics.length) : (filteredComics.length)
       );
-      console.log(filteredCharacters);
+      console.log(filteredComics);
 
-      const response = await resultAPI.get('/characters', {
+      const response = await resultAPI.get('/comics', {
         params: {
           offset,
         },
       });
 
-      if (filteredCharacters.length === 0) {
-        setCharacters([...characters, ...response.data.data.results]);
+      if (filteredComics.length === 0) {
+        setComics([...comics, ...response.data.data.results]);
       } else {
-        setFilteredCharacters(
-          [...filteredCharacters, ...response.data.data.results
-            .filter(({ name }) => name.toUpperCase().includes(inputSearch.toUpperCase()))],
+        setFilteredComics(
+          [...filteredComics, ...response.data.data.results
+            .filter(({ title }) => title.toUpperCase().includes(inputSearch.toUpperCase()))],
         );
       }
     } catch (error) {
       console.log(`Error: ${error.message}`);
     }
-  }, [characters, filteredCharacters]);
+  }, [comics, filteredComics]);
 
   return (
     <div className="container-btn">
