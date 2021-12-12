@@ -1,6 +1,7 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import Modal from 'react-modal';
-import MarvelContext from '../context/MarvelContext';
+// import MarvelContext from '../context/MarvelContext';
 
 const customStyles = {
   content: {
@@ -15,9 +16,9 @@ const customStyles = {
 
 Modal.setAppElement('#root');
 
-function ComicsModal() {
+function ComicsModal({ description }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const { comics } = useContext(MarvelContext);
+  // const { comics } = useContext(MarvelContext);
 
   const handleOpenModal = () => {
     setModalIsOpen(true);
@@ -40,15 +41,15 @@ function ComicsModal() {
         onRequestClose={handleCloseModal}
         style={customStyles}
       >
-        {comics.map(({ description }) => (
-          <div>
-            <p>{description}</p>
-            <button type="button" onClick={handleCloseModal}>close</button>
-          </div>
-        ))}
+        <p>{description}</p>
+        <button type="button" onClick={handleCloseModal}>close</button>
       </Modal>
     </div>
   );
 }
+
+ComicsModal.propTypes = {
+  description: PropTypes.string.isRequired,
+};
 
 export default ComicsModal;

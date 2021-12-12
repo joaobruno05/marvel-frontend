@@ -6,7 +6,7 @@ import ComicsModal from './ComicsModal';
 import '../styles/comic-card.css';
 
 function ComicCard({
-  id, title, path, extension,
+  id, title, path, extension, description,
 }) {
   const [selected, setSelected] = useState(false);
   const [disableSelect, setDisableSelect] = useState(false);
@@ -55,7 +55,7 @@ function ComicCard({
           >
             Remove
           </button>
-          <ComicsModal />
+          <ComicsModal description={description} />
           {/* Onde não houver descrição, mostrar uma mensagem personalizada */}
           {/* <p className="description">
             {description !== '' ? description : 'No description!!!'}</p> */}
@@ -68,7 +68,7 @@ function ComicCard({
 ComicCard.propTypes = {
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
-  // description: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
   path: PropTypes.string.isRequired,
   extension: PropTypes.string.isRequired,
 };
