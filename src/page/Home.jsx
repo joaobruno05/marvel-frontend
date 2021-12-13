@@ -12,16 +12,21 @@ import '../styles/home.css';
 
 function Home() {
   const {
-    comics, filteredComics, filteredData, status,
+    comics, filteredComics, status, inputSearch, setDisableMore,
   } = useContext(MarvelContext);
 
   // Renderizar na tela de acordo com a filtragem ou não dos personagens
   const getComics = () => {
-    if (filteredComics.length === 0) {
+    if (inputSearch.length === 0) {
+      setDisableMore(false);
       return comics;
     }
+    setDisableMore(true);
     return filteredComics;
   };
+
+  // console.log(comics);
+  // console.log(filteredComics);
 
   // Mostrar a tela de "Loading" enquanto espera o retorno da requisição da API
   if (status === 'loading') return (<Loading />);
@@ -37,7 +42,7 @@ function Home() {
         <div className="container">
           {/* Se existir filtro aplicado ou não,
             os personagens são renderizados normalmente */}
-          { filteredData().length !== 0 ? getComics().map(({
+          { comics.length !== 0 ? getComics().map(({
             id, title, description, thumbnail: { path, extension },
           }) => (
             <ComicsCard
