@@ -8,6 +8,7 @@ function MarvelProvider({ children }) {
   const [filteredComics, setFilteredComics] = useState([]);
   const [status, setStatus] = useState('loading');
   const [inputSearch, setInputSearch] = useState('');
+  const [disableMore, setDisableMore] = useState(false);
 
   // Requisição da API para utilizar na página "Home", renderizando na hora da montagem da tela
   useEffect(() => {
@@ -16,6 +17,7 @@ function MarvelProvider({ children }) {
         const { data } = await resultAPI.get('/comics');
         setStatus('OK');
         setComics(data.data.results);
+        // console.log(comics);
       } catch (error) {
         console.log(`Error: ${error}`);
       }
@@ -29,10 +31,29 @@ function MarvelProvider({ children }) {
 
   // Personagens filtrados e atualizados a cada pesquisa do usuário
   useEffect(() => {
-    const showFilteredComics = () => {
-      setFilteredComics(filteredData());
+    const showFilteredComics = async () => {
+      try {
+        const { data } = await resultAPI.get('/comics', {
+          params: {
+            limit: 100,
+          },
+        });
+        // console.log(data.data.results);
+        const responseFilteredData = () => data.data.results
+          .filter(({ title }) => title.toUpperCase().includes(inputSearch.toUpperCase()));
+
+        setFilteredComics(responseFilteredData());
+        // console.log(filteredComics);
+      } catch (error) {
+        console.log(`Error: ${error}`);
+      }
     };
+
     showFilteredComics();
+    // const showFilteredComics = () => {
+    //   setFilteredComics(filteredData());
+    // };
+    // showFilteredComics();
   }, [inputSearch]);
 
   const context = useMemo(() => ({
@@ -45,6 +66,8 @@ function MarvelProvider({ children }) {
     setStatus,
     inputSearch,
     setInputSearch,
+    disableMore,
+    setDisableMore,
   }));
 
   return (

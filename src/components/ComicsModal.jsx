@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Modal from 'react-modal';
-// import MarvelContext from '../context/MarvelContext';
+
+import '../styles/comics-modal.css';
 
 const customStyles = {
   content: {
@@ -18,7 +19,6 @@ Modal.setAppElement('#root');
 
 function ComicsModal({ description }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  // const { comics } = useContext(MarvelContext);
 
   const handleOpenModal = () => {
     setModalIsOpen(true);
@@ -29,9 +29,10 @@ function ComicsModal({ description }) {
   };
 
   return (
-    <div>
+    <div className="div-details">
       <button
         type="button"
+        className="details-btn"
         onClick={handleOpenModal}
       >
         Details
@@ -42,7 +43,12 @@ function ComicsModal({ description }) {
         style={customStyles}
       >
         <p>{description}</p>
-        <button type="button" onClick={handleCloseModal}>close</button>
+        <button
+          type="button"
+          onClick={handleCloseModal}
+        >
+          close
+        </button>
       </Modal>
     </div>
   );

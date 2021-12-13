@@ -8,30 +8,29 @@ import '../styles/more-button.css';
 
 function MoreButton() {
   const {
-    comics, setComics, filteredComics, setFilteredComics, inputSearch,
+    comics, setComics, filteredComics, disableMore, // setFilteredComics, inputSearch,
   } = useContext(MarvelContext);
 
   const handleMoreButton = useCallback(async () => {
     try {
-      const offset = (
-        (filteredComics.length === 0) ? (comics.length) : (filteredComics.length)
-      );
-      console.log(filteredComics);
+      // const offset = (
+      //   (filteredComics.length === 0)
+      // );
+      console.log(comics.length);
 
       const response = await resultAPI.get('/comics', {
         params: {
-          offset,
+          offset: comics.length,
         },
       });
 
-      if (filteredComics.length === 0) {
-        setComics([...comics, ...response.data.data.results]);
-      } else {
-        setFilteredComics(
-          [...filteredComics, ...response.data.data.results
-            .filter(({ title }) => title.toUpperCase().includes(inputSearch.toUpperCase()))],
-        );
-      }
+      setComics([...comics, ...response.data.data.results]);
+      // else {
+      //   setFilteredComics(
+      //     [...filteredComics, ...response.data.data.results
+      //       .filter(({ title }) => title.toUpperCase().includes(inputSearch.toUpperCase()))],
+      //   );
+      // }
     } catch (error) {
       console.log(`Error: ${error.message}`);
     }
@@ -40,8 +39,9 @@ function MoreButton() {
   return (
     <div className="container-btn">
       <button
-        className="btn more-btn"
+        className={disableMore ? 'more-btn-disable' : 'more-btn'}
         type="button"
+        disabled={disableMore}
         onClick={handleMoreButton}
       >
         SEE MORE

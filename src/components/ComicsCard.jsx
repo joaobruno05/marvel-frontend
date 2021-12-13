@@ -25,14 +25,12 @@ function ComicCard({
   };
 
   return (
-    <div
-      key={id}
-      className="info-card"
-    >
+    <div key={id} className="info-card">
       <div className="card">
         <div>
-          <h2 className="name-card">{title}</h2>
-          <p className={selected ? 'select' : 'no-select'}>Comic selected !</p>
+          <h3 className="name-card">{title}</h3>
+          {/* Mostrar uma mensagem personalizada ao selecionar o quadrinho */}
+          <p className={selected ? 'select' : 'no-select'}>Comic selected</p>
           <img
             className="img-card"
             // Colocar uma imagem diferente quando for uma imagem não avaliada
@@ -40,27 +38,32 @@ function ComicCard({
             alt={title}
           />
         </div>
-        <div>
+        <div className="div-select-remove">
           <button
             type="button"
+            className="select-btn"
             disabled={disableSelect}
             onClick={handleSelect}
           >
-            Select
+            <i className="fas fa-plus-circle"> Select</i>
           </button>
           <button
             type="button"
+            className="remove-btn"
             disabled={disableRemove}
             onClick={handleRemove}
           >
-            Remove
+            <i className="fas fa-trash-alt"> Remove</i>
           </button>
+        </div>
+        <div>
           <ComicsModal description={description} />
           {/* Onde não houver descrição, mostrar uma mensagem personalizada */}
           {/* <p className="description">
             {description !== '' ? description : 'No description!!!'}</p> */}
         </div>
       </div>
+      {/* <p className={selected ? 'select' : 'no-select'}>Comic selected !</p> */}
     </div>
   );
 }
