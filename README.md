@@ -1,9 +1,9 @@
 # Funcionamento da Aplicação
-A aplicação é uma busca por personagens da Marvel de acordo com o filtro de pesquisa utilizado. Quando a página é carregada é feito uma requisição para a API da Marvel onde são retornados os personagens.
+A aplicação é uma busca por personagens da Marvel de acordo com o filtro de pesquisa utilizado. Quando a página é carregada é feito uma requisição para a API da Marvel onde são retornados os quadrinhos.
 
-Inicialmente, como o usuário não pesquisou nada, é mostrado todos os personagens (sem nenhum filtro) e eles são divididos por paginação, onde pode ser carregado mais clicando no botão "SEE MORE" na parte inferior do site. O usuário pode também pesquisar pelo nome do personagem na barra de pesquisa.
+Inicialmente, como o usuário não pesquisou nada, é mostrado todos os personagens (sem nenhum filtro) e eles são divididos por paginação, onde pode ser carregado mais clicando no botão "SEE MORE" na parte inferior do site. O usuário pode também pesquisar pelo nome do quadrinho na barra de pesquisa.
 
-Outra funcionalidade interessante é que ao clicar em cada Card pode ser visto a descrição daquele personagem específico e clicando novamente a descrição é "escondida".
+Cada card tem algumas funcionalidades. O usuário pode selecionar e remover o quadrinho. Além disso tem um botão que abre um modal com os detalhes de cada um.
 
 # Getting Started with Create React App
 
