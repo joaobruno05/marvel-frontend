@@ -57,13 +57,14 @@ function ComicCard({
           </button>
         </div>
         <div>
-          <ComicsModal description={description} />
-          {/* Onde não houver descrição, mostrar uma mensagem personalizada */}
-          {/* <p className="description">
-            {description !== '' ? description : 'No description!!!'}</p> */}
+          <ComicsModal
+            title={title}
+            path={path}
+            extension={extension}
+            description={description}
+          />
         </div>
       </div>
-      {/* <p className={selected ? 'select' : 'no-select'}>Comic selected !</p> */}
     </div>
   );
 }

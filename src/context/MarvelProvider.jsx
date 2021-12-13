@@ -17,7 +17,6 @@ function MarvelProvider({ children }) {
         const { data } = await resultAPI.get('/comics');
         setStatus('OK');
         setComics(data.data.results);
-        // console.log(comics);
       } catch (error) {
         console.log(`Error: ${error}`);
       }
@@ -38,22 +37,16 @@ function MarvelProvider({ children }) {
             limit: 100,
           },
         });
-        // console.log(data.data.results);
         const responseFilteredData = () => data.data.results
           .filter(({ title }) => title.toUpperCase().includes(inputSearch.toUpperCase()));
 
         setFilteredComics(responseFilteredData());
-        // console.log(filteredComics);
       } catch (error) {
         console.log(`Error: ${error}`);
       }
     };
 
     showFilteredComics();
-    // const showFilteredComics = () => {
-    //   setFilteredComics(filteredData());
-    // };
-    // showFilteredComics();
   }, [inputSearch]);
 
   const context = useMemo(() => ({

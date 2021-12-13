@@ -42,7 +42,7 @@ function Home() {
         <div className="container">
           {/* Se existir filtro aplicado ou não,
             os personagens são renderizados normalmente */}
-          { comics.length !== 0 ? getComics().map(({
+          { (filteredComics.length !== 0) ? getComics().map(({
             id, title, description, thumbnail: { path, extension },
           }) => (
             <ComicsCard
