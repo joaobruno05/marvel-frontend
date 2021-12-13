@@ -1,9 +1,12 @@
+.modal {
+  max-height: 500px;
+}
+
 .div-details {
   text-align: center;
 }
 
 .details-btn {
-  /* border: none; */
   border: 1px solid ;
   border-radius: 10px;
   color: brown;
@@ -18,4 +21,52 @@
   background-color: brown;
   color: white;
   transition: 0.4s;
+}
+
+.div-close-modal {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -20px;
+  margin-right: -20px;
+}
+
+.close-modal {
+  background-color: brown;
+  border: none;
+  cursor: pointer;
+  color: white;
+  padding: 6px;
+}
+
+.title-modal {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.div-img-modal {
+  text-align: center;
+}
+
+.img-modal {
+  width: 200px;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.title-description {
+  padding: 5px;
+  text-align: center;
+}
+
+.description {
+  text-align: justify;
+  font-size: 1.2em;
+  padding: 10px;
+}
+
+.no-description {
+  text-align: center;
+  font-size: 1.2em;
+  padding: 10px;
+  margin-bottom: 15px;
 }

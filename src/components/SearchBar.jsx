@@ -6,11 +6,6 @@ import '../styles/searchbar.css';
 function SearchBar() {
   const { inputSearch, setInputSearch } = useContext(MarvelContext);
 
-  // const handleInputSearch = ({ target }) => {
-  //   const { value } = target;
-  //   setInputSearch(value);
-  // };
-
   return (
     <section>
       <div className="searchbar">
